@@ -1,4 +1,4 @@
-ID,title,stock,authorID
+ID,title,stock,author_id
 1,The Great Gatsby,10,1
 2,Pride and Prejudice,5,2
 3,To Kill a Mockingbird,7,3
