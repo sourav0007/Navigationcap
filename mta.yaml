@@ -28,9 +28,23 @@ modules:
       - books.zip
       name: books
       target-path: resources/
+    - artifacts:
+      - app.zip
+      name: app
+      target-path: resources/
 - name: books
   type: html5
   path: app/books
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: app
+  type: html5
+  path: app/app
   build-parameters:
     build-result: dist
     builder: custom

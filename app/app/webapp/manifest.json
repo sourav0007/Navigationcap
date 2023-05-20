@@ -1,7 +1,7 @@
 {
   "_version": "1.49.0",
   "sap.app": {
-    "id": "books",
+    "id": "app",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -12,8 +12,8 @@
     "resources": "resources.json",
     "sourceTemplate": {
       "id": "@sap/generator-fiori:lrop",
-      "version": "1.9.5",
-      "toolsId": "be8cf279-e8bf-4c31-92a8-34fbb26705d8"
+      "version": "1.9.6",
+      "toolsId": "756870ca-9a17-4f11-bac7-aa8d60283a6f"
     },
     "dataSources": {
       "mainService": {
@@ -46,7 +46,7 @@
   "sap.ui5": {
     "flexEnabled": true,
     "dependencies": {
-      "minUI5Version": "1.113.0",
+      "minUI5Version": "1.114.0",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
@@ -62,7 +62,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "books.i18n.i18n"
+          "bundleName": "app.i18n.i18n"
         }
       },
       "": {
@@ -91,11 +91,20 @@
           "name": "BooksList",
           "target": "BooksList"
         },
+
         {
           "pattern": "Books({key}):?query:",
           "name": "BooksObjectPage",
           "target": "BooksObjectPage"
+        },
+        
+
+        {
+          "pattern": "Books({key})/author:?query:",
+          "name": "AuthorObjectPage",
+          "target": "AuthorObjectPage"
         }
+
       ],
       "targets": {
         "BooksList": {
@@ -116,6 +125,20 @@
             }
           }
         },
+
+        "AuthorObjectPage": {
+          "type": "Component",
+          "id": "BooksObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "entitySet": "author"
+              
+            }
+          }
+        },
+
         "BooksObjectPage": {
           "type": "Component",
           "id": "BooksObjectPage",
@@ -123,10 +146,19 @@
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "entitySet": "Books"
+              "entitySet": "BooksList",
+              "navigation": {
+                "author": {
+                  "detail": {
+                    "route": "AuthorObjectPage"
+                  }
+                }
+              }
             }
           }
         }
+
+
       }
     }
   },

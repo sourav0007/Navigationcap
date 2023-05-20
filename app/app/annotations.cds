@@ -25,7 +25,7 @@ annotate service.Books with @(
     ]
 );
 annotate service.Books with @(
-    UI.FieldGroup #GeneratedGroup1 : {
+   /* UI.FieldGroup #GeneratedGroup1 : {
         $Type : 'UI.FieldGroupType',
         Data : [
             {
@@ -49,13 +49,41 @@ annotate service.Books with @(
                 Value : author_ID,
             },
         ],
-    },
+    },*/
     UI.Facets : [
-        {
+        /*{
             $Type : 'UI.ReferenceFacet',
             ID : 'GeneratedFacet1',
-            Label : 'General Information',
+            Label : 'Books',
             Target : '@UI.FieldGroup#GeneratedGroup1',
+        },*/
+         {
+            $Type : 'UI.ReferenceFacet',
+            ID : 'GeneratedFacet2',
+            Label : 'Author',
+            Target : 'author/@UI.LineItem',
         },
     ]
 );
+
+annotate service.Author with @(
+    UI.LineItem : [
+        {
+            $Type : 'UI.DataField',
+            Label : 'ID',
+            Value : ID,
+        },
+        {
+            $Type : 'UI.DataField',
+            Label : 'name',
+            Value : name,
+        },
+        {
+            $Type : 'UI.DataField',
+            Label : 'surname',
+            Value : surname,
+        }
+    ]
+);
+
+

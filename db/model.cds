@@ -1,13 +1,7 @@
 namespace my.bookshop;
 
 
-entity Author {
-  key ID      : Integer;
-      name    : String;
-      surname : Integer;
-      books   : Association to many Books
-                  on books.author = $self;
-}
+
 
 entity Books {
   key ID       : Integer;
@@ -15,6 +9,14 @@ entity Books {
       stock    : Integer;
       author  : Association to Author;
                    
+}
+
+entity Author {
+  key ID      : Integer;
+      name    : String;
+      surname : Integer;
+      books   : Association to many Books
+                  on books.author = $self;
 }
 
 using {managed} from '@sap/cds/common';
